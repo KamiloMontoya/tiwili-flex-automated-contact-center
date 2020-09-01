@@ -1,0 +1,58 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: assignmentcallback
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+# The `functions` block defines what code to deploy
+functions:
+  createCall:
+    handler: handler.createCall
+    # The `events` block defines how to trigger the handler.createCall code
+    events:
+      - http:
+          path: create-call
+          method: post
+          cors: true
+  evaluateCall:
+    handler: handler.evaluateCall
+    # The `events` block defines how to trigger the handler.evaluateCall code
+    events:
+      - http:
+          path: evaluate-call
+          method: get
+          cors: false
+  evaluateCompleteCall:
+    handler: handler.evaluateCompleteCall
+    # The `events` block defines how to trigger the handler.evaluateCompleteCall code
+    events:
+      - http:
+          path: evaluate-complete-call
+          method: get
+          cors: true
+  assignCallFlex:
+    handler: handler.assignCallFlex
+    # The `events` block defines how to trigger the handler.assignCallFlex code
+    events:
+      - http:
+          path: assign-call-flex
+          method: post
+          cors: true
+  demoServerLess:
+    handler: handler.demoServerLess
+    # The `events` block defines how to trigger the handler.demoServerLess code
+    events:
+      - http:
+          path: demo-serverless
+          method: get
+          cors: true
+          
+      
